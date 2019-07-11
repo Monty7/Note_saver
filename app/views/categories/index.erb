@@ -1,0 +1,16 @@
+<h1>All Categories</h1>
+
+<% if @categories.nil? %>
+    <h3>You don't have any categories</h3>
+    <p><a href="/categories/new">Create a new category</a></p>
+<% else %>
+    <h3>Here are a list of your categories:</h3>
+<ul>
+    <% @categories.each do |category|%>
+
+        <li><%= category.name %></li>
+    <% end %>
+</ul>
+
+
+<% end %>

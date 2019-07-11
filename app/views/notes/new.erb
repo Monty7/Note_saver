@@ -1,0 +1,31 @@
+<h1>Create a New Note</h1>
+
+<form method="POST" action="/notes">
+    <p>
+        <label for="title">Title: </label>
+        <input type="text" id="title" name="note[title]">
+    </p>
+    <p>
+        <label for="content">Note: </label>
+        <input type="content" id="content" name="note[content]">
+    </p>
+    <% if @categories.empty? %>
+        <h3>Looks like you don't have any categories.</h3>
+        <h3><a href="/category/new">Create a new category</a></h3>>
+    <% else %>
+        <p>
+            <label for="category">Category: </label>
+            <select id="category" name="note[category_id]">
+                <option>- Select a category -</option>
+                <% @categories.each do |category| %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% end%>
+            </select>
+        </p>   
+    <% end %>
+    <p>
+        <input type="submit" id="submit" value="Create Note">
+    </p>
+
+
+</form>

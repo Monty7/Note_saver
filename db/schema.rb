@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20190709184420) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "category"
+    t.string "name"
   end
 
   create_table "notes", force: :cascade do |t|

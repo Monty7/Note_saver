@@ -1,17 +1,17 @@
 <h1>Please create a username and password to signin</h1>
-<form method="POST" action="/users/signup">
+<form method="POST" action="/signup">
     <p>
         <label for="username">Username: </label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="user[username]">
     </p>
     <p>
         <label for="password">Password: </label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="user[password]">
     </p>
 
     <p>
         <label for="email">Email: </label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="user[email]">
     </p>
 
     <p>
