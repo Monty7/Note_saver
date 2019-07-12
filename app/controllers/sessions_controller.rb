@@ -22,8 +22,25 @@ class SessionsController < ApplicationController
     end
 
     get '/login' do
-        erb :'/users/signin'
-        #redirect :'/notes'
+   
+        if logged_in?
+            redirect :'/notes'
+        else
+           
+           erb :'/users/signin'
+            
+        end
+    end
+
+    post '/login' do
+    
+        login(params[:username], params[:password])
+
+        #located in helpers
+    end
+
+    get '/logout' do
+        logout
     end
 
 end

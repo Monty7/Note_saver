@@ -1,10 +1,16 @@
+<nav>
+
+        <a href="/logout">Log Out</a>
+
+</nav>
 <h1>All Notes</h1>
 
 <% if @notes.nil? %>
     <h3>You don't have any saved notes</h3>
-    <p><a href="/notes/new">Create a new note</a></p>
+   
 <% else %>
     <% @notes.each do |note|%>
-        <div><%= note.title %></div>
+        <div><a href="/notes/<%= note.id %>"><%= note.title %></a></div>
     <% end %>
 <% end %>
+<p><a href="/notes/new">Create a new note</a></p>

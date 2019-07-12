@@ -1,0 +1,14 @@
+<nav><a href="/logout">logout</a></nav>
+<h1><%= @category.name %></h1>
+
+<% @category.notes.each do |note| %>
+    <div>
+        <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
+
+        <p><%= note.content %> <br>
+            <span>Created at: <%= note.created_at %></span>
+        </p>
+    </div>
+<% end %>
+
+<p><a href="/category">Go back to categories</a></p>

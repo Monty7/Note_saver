@@ -15,7 +15,7 @@
     <% else %>
         <p>
             <label for="category">Category: </label>
-            <select id="category" name="note[category_id]">
+            <select name="note[category_id]" id="category">
                 <option>- Select a category -</option>
                 <% @categories.each do |category| %>
                     <option value="<%= category.id %>"><%= category.name %></option>

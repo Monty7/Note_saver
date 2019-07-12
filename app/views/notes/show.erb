@@ -1,4 +1,22 @@
+<nav><a href="/logout">logout</a></nav>
 <h1><%= @note.title%></h1>
 
 <p><%= @note.content %></p>
 <p><%= @note.created_at %></p>
+
+<p>Category: <a href="/category/<%= @category.id %>"> <%= @category.name %> </a></p>
+
+<p><a href="/notes/<%= @note.id %>/edit">Edit Note</p>
+
+
+
+<p><a href="/category">Go to all categories</a><br>
+<a href="/notes">Go to all of my notes</a></p>
+
+<form action="/notes/<%= @note.id %>/delete" method="post">
+    <p>
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Note">
+    </p>
+
+</form>
