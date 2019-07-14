@@ -9,7 +9,7 @@
         <label for="content">Note: </label>
         <input type="content" id="content" name="note[content]">
     </p>
-    <% if @categories.empty? %>
+    <% if @user_categories.empty? %>
         <h3>Looks like you don't have any categories.</h3>
         <h3><a href="/category/new">Create a new category</a></h3>>
     <% else %>
@@ -17,7 +17,7 @@
             <label for="category">Category: </label>
             <select name="note[category_id]" id="category">
                 <option>- Select a category -</option>
-                <% @categories.each do |category| %>
+                <% @user_categories.each do |category| %>
                     <option value="<%= category.id %>"><%= category.name %></option>
                 <% end%>
             </select>

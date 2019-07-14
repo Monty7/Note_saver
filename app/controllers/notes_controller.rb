@@ -12,7 +12,8 @@ class NotesController < ApplicationController
         if !logged_in?
             redirect "/login"
         else
-            @categories = Category.all
+            #@categories = Category.all
+            @user_categories = current_user.categories
             erb :'/notes/new'
         end
     end
