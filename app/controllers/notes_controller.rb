@@ -40,14 +40,18 @@ class NotesController < ApplicationController
 
     get '/notes/:id/edit' do
         @note = Note.find_by_id(params[:id])
+        @user_categories = current_user.categories
+       #binding.pry
         erb :"/notes/edit"
     end
 
     patch '/notes/:id' do
         @note = Note.find_by_id(params[:id])
-        @note.title = params[:title]
-        @note.content = params[:content]
+        @note.title = params[:note][:title]
+        @note.content = params[:note][:content]
+        @note.category_id = params[:note][:category_id]
         @note.save
+        binding.pry
         redirect "/notes/#{@note.id}"
     end
 

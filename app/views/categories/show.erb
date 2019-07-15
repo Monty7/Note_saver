@@ -1,14 +1,19 @@
 <nav><a href="/logout">logout</a></nav>
 <h1><%= @category.name %></h1>
+<% binding.pry %>
+<% if @category.notes.nil? %>
+    <h4>There are currently no notes for this category</h4>
+    <p><a href="/notes/new">Create a note for this category.</a></p>
+    
+<% else%>
+    <% @category.notes.each do |note| %>
+        <div>
+            <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
 
-<% @category.notes.each do |note| %>
-    <div>
-        <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
-
-        <p><%= note.content %> <br>
-            <span>Created at: <%= note.created_at %></span>
-        </p>
-    </div>
+            <p><%= note.content %> <br>
+                <span>Created at: <%= note.created_at %></span>
+            </p>
+        </div>
+    <% end %>
 <% end %>
-
 <p><a href="/category">Go back to categories</a></p>

@@ -6,15 +6,15 @@ class CategoryController < ApplicationController
     end
 
     get '/category/new' do
-        if logged_in?
+        if !logged_in?
             redirect "/login"
         else
-            erb :'categories/new'
+            erb :'/categories/new'
         end
     end
 
     get '/category/:id' do
-        binding.pry
+       # binding.pry
         #@notes = Note.where(:category_id => params[:id])
         @category = Category.find_by_id(params[:id])
         @category.notes
@@ -23,15 +23,17 @@ class CategoryController < ApplicationController
 
     post '/category' do
         
-       # binding.pry
+        
         if params[:category][:name] == ""
-            redirect '/category'
+            redirect '/category/new'
         else
            
         #create category
-            @category = Category.create(params[:category])
-        
+            category = Category.new(params[:category])
+            current_user.categories << category
+        #Somehow the association creates a new note everytime a category is created
         #save to database
+            category.save
             redirect '/category'
         end
     end
