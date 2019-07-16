@@ -1,8 +1,7 @@
 <h1>All Categories</h1>
 
-<% if @categories.nil? %>
-    <h3>You don't have any categories</h3>
-    <p><a href="/categories/new">Create a new category</a></p>
+<% if @categories.empty? %>
+    <h3>You currently don't have any categories.</h3>
 <% else %>
     <h3>Here are a list of your categories:</h3>
 <ul>
@@ -17,4 +16,5 @@
 
 <p>
     <a href="/category/new">Create a new category</a>
+    <p><a href="/notes">Go to the list of all notes</a></p>
 </p>

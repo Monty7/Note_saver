@@ -13,7 +13,8 @@ class NotesController < ApplicationController
             redirect "/login"
         else
             #@categories = Category.all
-            @user_categories = current_user.categories
+            @user_categories = Category.where(:user_id => current_user.id)
+           # binding.pry
             erb :'/notes/new'
         end
     end
@@ -29,6 +30,7 @@ class NotesController < ApplicationController
         @note = Note.new(params[:note])
         #@note = Note.create(params[:note])
         @note.user_id = session[:user_id]
+        
         if @note.save
             #binding.pry
             #add the user id and category id
@@ -40,7 +42,9 @@ class NotesController < ApplicationController
 
     get '/notes/:id/edit' do
         @note = Note.find_by_id(params[:id])
-        @user_categories = current_user.categories
+        @user_categories = Category.where(:user_id => current_user.id)
+   
+        #or @user_categories = Category.find_by(:user_id => 1)
        #binding.pry
         erb :"/notes/edit"
     end
@@ -51,7 +55,7 @@ class NotesController < ApplicationController
         @note.content = params[:note][:content]
         @note.category_id = params[:note][:category_id]
         @note.save
-        binding.pry
+
         redirect "/notes/#{@note.id}"
     end
 

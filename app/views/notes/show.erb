@@ -1,11 +1,14 @@
 <nav><a href="/logout">logout</a></nav>
-<h1><%= @note.title%></h1>
+<h1>TITLE: <%= @note.title%></h1>
 
-<p><%= @note.content %></p>
-<p><%= @note.created_at %></p>
-
-<p>Category: <a href="/category/<%= @category.id %>"> <%= @category.name %> </a></p>
-
+<p>CONTENT: <%= @note.content %></p>
+<p>Created: <%= @note.created_at %></p>
+<p>Updated: <%= @note.updated_at %></p>
+<% if @category %>
+    <p>Category: <a href="/category/<%= @category.id %>"> <%= @category.name %> </a></p>
+<% else %>
+    <p>This note is not in a category. <a href="/category/new">Create a category to save your notes in.</a> </p>
+<% end %>
 <p><a href="/notes/<%= @note.id %>/edit">Edit Note</p>
 
 

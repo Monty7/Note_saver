@@ -1,4 +1,4 @@
-<h1>Edit Note</h1>
+<h1>Create or Edit Note</h1>
 <form method="post" action="/notes/<%= @note.id %>">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <p>
@@ -13,7 +13,7 @@
     <% if @user_categories.nil? %>
         <label for="category">This note does not have a category associated with it.
         Please select a category for this note:</label>
-        <% else%>
+        <% else %>
         <label for="category">Please select a category if you want to change your note's category:
         </label>
         <% end %>
@@ -27,6 +27,6 @@
             </select>
         </p>
      <p>
-        <input type="submit" id="submit" value="Edit Note">
+        <input type="submit" id="submit" value="Save Changes">
     </p>
 </form>

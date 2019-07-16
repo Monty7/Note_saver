@@ -1,19 +1,27 @@
 <nav><a href="/logout">logout</a></nav>
-<h1><%= @category.name %></h1>
-<% binding.pry %>
-<% if @category.notes.nil? %>
+
+<h1>Category: <%= @category.name %></h1>
+
+<% if @category.notes.empty?%>
     <h4>There are currently no notes for this category</h4>
-    <p><a href="/notes/new">Create a note for this category.</a></p>
+
     
 <% else%>
     <% @category.notes.each do |note| %>
         <div>
-            <h3><a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
-
+            <h3>Note Title: <a href="/notes/<%= note.id %>"><%= note.title %></a></h3>
+            <h5>Note Content:</h5>
             <p><%= note.content %> <br>
                 <span>Created at: <%= note.created_at %></span>
+                <span>Updated at: <%= note.updated_at %></span>
             </p>
         </div>
     <% end %>
 <% end %>
+<form method="post" action="/category/<%= @category.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Category">
+
+</form>
+<p><a href="/category/<%= @category.id %>/edit"</a>Edit Category</p>
 <p><a href="/category">Go back to categories</a></p>

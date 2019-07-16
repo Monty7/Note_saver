@@ -5,7 +5,7 @@
 </nav>
 <h1>All Notes</h1>
 
-<% if @notes.nil? %>
+<% if @notes.empty? %>
     <h3>You don't have any saved notes</h3>
    
 <% else %>
@@ -14,3 +14,4 @@
     <% end %>
 <% end %>
 <p><a href="/notes/new">Create a new note</a></p>
+<p><a href="/category">Go to categories</a></p>

@@ -7,11 +7,11 @@
     </p>
     <p>
         <label for="content">Note: </label>
-        <input type="content" id="content" name="note[content]">
+        <textarea type="content" id="content" name="note[content]"></textarea>
     </p>
     <% if @user_categories.empty? %>
         <h3>Looks like you don't have any categories.</h3>
-        <h3><a href="/category/new">Create a new category</a></h3>>
+        <h3><a href="/category/new">Create a new category</a></h3>
     <% else %>
         <p>
             <label for="category">Category: </label>
