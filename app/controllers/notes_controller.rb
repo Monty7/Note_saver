@@ -26,6 +26,21 @@ class NotesController < ApplicationController
         erb :'/notes/show'
     end
 
+    get '/random_note' do
+        if logged_in?
+            notes = current_user.notes
+            if !notes.empty?
+                @note = current_user.notes.sample
+                @category = Category.find_by_id(@note.category_id)
+                erb :'/notes/show'
+            else
+                redirect '/notes/new'
+            end
+        else
+            redirect "/login"
+        end
+    end
+
     post '/notes' do
         @note = Note.new(params[:note])
         #@note = Note.create(params[:note])
@@ -55,7 +70,7 @@ class NotesController < ApplicationController
         @note.content = params[:note][:content]
         @note.category_id = params[:note][:category_id]
         @note.save
-
+            #@note.update(params[:note])
         redirect "/notes/#{@note.id}"
     end
 

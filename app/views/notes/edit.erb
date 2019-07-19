@@ -16,7 +16,7 @@
         <% else %>
         <label for="category">Please select a category if you want to change your note's category:
         </label>
-        <% end %>
+
         
             <label for="category">Category: </label>
             <select name="note[category_id]" id="category">
@@ -24,7 +24,8 @@
                 <% @user_categories.each do |category| %>
                     <option value="<%= category.id %>"><%= category.name %></option>
                 <% end%>
-            </select>
+            </select>        
+        <% end %>
         </p>
      <p>
         <input type="submit" id="submit" value="Save Changes">
