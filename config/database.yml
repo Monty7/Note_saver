@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: note_saver_postgres_development
+  host: localhost
+  pool: 2
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: note_saver_postgres_test
+  host: localhost
+  pool: 2
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: note_saver_postgres_production
+  pool: 2
